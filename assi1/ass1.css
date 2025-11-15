@@ -1,0 +1,58 @@
+body {
+    /* Basic centering for the entire page */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Optional background color */
+}
+
+/* 1. Card Container & 4. Styling (Box Model) */
+.profile-card {
+    /* Card Specifications */
+    width: 300px;
+    height: 400px; /* Note: We might allow height to adjust based on content */
+
+    /* Box Model Styling */
+    padding: 20px; /* Padding: 20px inside the card */
+    border: 2px solid black; /* Border: 2px solid black */
+    border-radius: 15px; /* Rounded Corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box Shadow for a subtle effect */
+
+    /* Margin: auto (to center the card) - achieved by flexbox on body, 
+       but margin: auto is essential for centering blocks *with* a set width. */
+    margin: auto; 
+
+    /* Layout: Center items vertically within the card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+}
+
+/* 2. Profile Image */
+.profile-img {
+    width: 150px; /* Width: 150px */
+    height: 150px; /* Set height equal to width for a perfect circle */
+    
+    /* Circular shape & Positioned at the top */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    margin-bottom: 20px; /* Space between image and details */
+}
+
+/* 3. Profile Details */
+.profile-details h2 {
+    margin-top: 0; /* Remove default top margin */
+    margin-bottom: 5px; /* Small space below the name */
+    color: #333;
+}
+
+.profile-details p {
+    margin-top: 0;
+    color: #666;
+    font-size: 0.9em;
+}
