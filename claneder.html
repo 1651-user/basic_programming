@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Schedule Time Table</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fcf9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 20px;
+        }
+
+        /* --- Schedule Container using CSS Grid --- */
+        .schedule-container {
+            display: grid;
+            /* 6 columns: 1 auto-sized for time labels, 5 equal-sized for days */
+            grid-template-columns: auto repeat(5, 1fr);
+            /* 8 rows: 1 for header, 7 for time slots */
+            grid-template-rows: repeat(8, auto);
+            gap: 8px; /* Space between cells */
+            max-width: 900px; 
+            width: 100%;
+            padding: 20px;
+        }
+
+        /* Base Cell Styling */
+        .cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 10px;
+            border-radius: 25px; /* Creates the pill shape */
+            font-size: 0.9em;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+            transition: transform 0.2s; /* Subtle hover effect */
+        }
+        
+        .cell:hover {
+            transform: translateY(-1px);
+        }
+
+        /* --- Header Row Styling (Days) --- */
+        .header-cell {
+            font-weight: bold;
+            color: white;
+            font-size: 1.1em;
+            padding: 15px 10px;
+        }
+
+        .day-header {
+            background-color: #ff99aa; /* Pink for day headers */
+        }
+
+        .time-header {
+            /* Top-left corner is left empty */
+            background: none; 
+            box-shadow: none;
+        }
+
+        /* --- Time Label Styling (Left Column) --- */
+        .time-label {
+            font-weight: bold;
+            color: white;
+            font-size: 1em;
+            background-color: #99cccc; /* Light blue color for time labels */
+        }
+
+        /* --- Subject Cell Styling --- */
+        .pink-cell {
+            background-color: #ffcce5; /* Light pink subject cells */
+            color: #663366;
+        }
+
+        .yellow-cell {
+            background-color: #ffeeaa; /* Light yellow subject cells */
+            color: #cc9900;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="schedule-container">
+        <div class="cell header-cell time-header"></div>
+        <div class="cell header-cell day-header">Monday</div>
+        <div class="cell header-cell day-header">Tuesday</div>
+        <div class="cell header-cell day-header">Wednesday</div>
+        <div class="cell header-cell day-header">Thursday</div>
+        <div class="cell header-cell day-header">Friday</div>
+
+        <div class="cell time-label">08:00</div>
+        <div class="cell pink-cell">Maths</div>
+        <div class="cell yellow-cell">English</div>
+        <div class="cell pink-cell">Science</div>
+        <div class="cell yellow-cell">PT</div>
+        <div class="cell pink-cell">Art</div>
+
+        <div class="cell time-label">09:00</div>
+        <div class="cell yellow-cell">English</div>
+        <div class="cell pink-cell">Maths</div>
+        <div class="cell yellow-cell">Social Studies</div>
+        <div class="cell pink-cell">Music</div>
+        <div class="cell yellow-cell">Library</div>
+
+        <div class="cell time-label">10:00</div>
+        <div class="cell pink-cell">Science</div>
+        <div class="cell yellow-cell">PT</div>
+        <div class="cell pink-cell">Break</div>
+        <div class="cell yellow-cell">Maths</div>
+        <div class="cell pink-cell">Exams</div>
+
+        <div class="cell time-label">11:00</div>
+        <div class="cell yellow-cell">Break</div>
+        <div class="cell pink-cell">Hindi</div>
+        <div class="cell yellow-cell">English</div>
+        <div class="cell pink-cell">Science</div>
+        <div class="cell yellow-cell">Maths</div>
+        
+        <div class="cell time-label">12:00</div>
+        <div class="cell pink-cell">Social Studies</div>
+        <div class="cell yellow-cell">Art</div>
+        <div class="cell pink-cell">Maths</div>
+        <div class="cell yellow-cell">English</div>
+        <div class="cell pink-cell">PT</div>
+
+        <div class="cell time-label">13:00</div>
+        <div class="cell yellow-cell">Music</div>
+        <div class="cell pink-cell">Science</div>
+        <div class="cell yellow-cell">Hindi</div>
+        <div class="cell pink-cell">Social Studies</div>
+        <div class="cell yellow-cell">Reading</div>
+
+        <div class="cell time-label">14:00</div>
+        <div class="cell pink-cell">Library</div>
+        <div class="cell yellow-cell">Exams</div>
+        <div class="cell pink-cell">PT</div>
+        <div class="cell yellow-cell">Art</div>
+        <div class="cell pink-cell">Hindi</div>
+
+    </div>
+
+</body>
+</html>
