@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Grid Layout</title>
+    <style>
+        /* General Page Styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Grid Container Styling */
+        .grid-container {
+            display: grid;
+            /* Creates 3 equal columns */
+            grid-template-columns: repeat(3, 1fr); 
+            /* Creates the white gap between boxes */
+            gap: 5px; 
+            width: 600px; /* Adjust overall width as needed */
+        }
+
+        /* Individual Box Styling */
+        .box {
+            height: 120px; /* Set height for rectangles */
+            display: flex;
+            justify-content: center; /* Center text horizontally */
+            align-items: center;     /* Center text vertically */
+            color: white;
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        /* Specific Colors based on the image */
+        /* Row 1 */
+        .box-2 { background-color: #FF4500; } /* Orange Red */
+        .box-3 { background-color: #4169E1; } /* Royal Blue */
+        .box-4 { background-color: #FFD700; } /* Gold */
+
+        /* Row 2 */
+        .box-5 { background-color: #8A2BE2; } /* Blue Violet */
+        .box-6 { background-color: #32CD32; } /* Lime Green */
+        .box-1 { background-color: #00BFFF; } /* Deep Sky Blue */
+
+        /* Row 3 */
+        .box-7 { background-color: #FF7F50; } /* Coral */
+        .box-8 { background-color: #20B2AA; } /* Light Sea Green */
+        .box-9 { background-color: #800000; } /* Maroon */
+
+    </style>
+</head>
+<body>
+
+    <div class="grid-container">
+        <div class="box box-2">2.</div>
+        <div class="box box-3">3.</div>
+        <div class="box box-4">4.</div>
+        
+        <div class="box box-5">5.</div>
+        <div class="box box-6">6.</div>
+        <div class="box box-1">1.</div> <div class="box box-7">7.</div>
+        <div class="box box-8">8.</div>
+        <div class="box box-9">9.</div>
+    </div>
+
+</body>
+</html>
