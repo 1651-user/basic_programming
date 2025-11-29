@@ -97,17 +97,17 @@
       const defaultImage = 'https://coding-platform.s3.amazonaws.com/dev/lms/tickets/5e80fcb6-3f8e-480c-945b-30a5359eb40e/JNmYjkVr3WOjsrbu.png';
       let fleet = loadData();
 
-      // DOM
+ 
       const grid = document.getElementById('fleetGrid');
       const form = document.getElementById('fleetForm');
       const filterCategory = document.getElementById('filterCategory');
       const filterAvail = document.getElementById('filterAvail');
       const clearFiltersBtn = document.getElementById('clearFilters');
 
-      // initial render
+      
       render();
 
-      // handle add via form submit (avoids button vs click issues)
+     
       form.addEventListener('submit', function(e){
         e.preventDefault();
         const reg = document.getElementById('regNo').value.trim();
@@ -115,25 +115,25 @@
         const driver = document.getElementById('driver').value.trim();
         const available = document.getElementById('isAvailable').checked;
 
-        // validation
+     
         if(!reg || !category || !driver){
           alert('Please fill all required fields.');
           return;
         }
 
-        // create & push
+      
         const id = Date.now().toString();
         fleet.push({ id, reg, category, driver, available });
         saveData();
 
-        // clear form and keep checkbox default true
+       
         form.reset();
         document.getElementById('isAvailable').checked = true;
 
         render();
       });
 
-      // filters
+    
       filterCategory.addEventListener('change', render);
       filterAvail.addEventListener('change', render);
       clearFiltersBtn.addEventListener('click', function(){
@@ -142,7 +142,6 @@
         render();
       });
 
-      // render applies filters and attaches delegated handlers
       function render(){
         grid.innerHTML = '';
         const cat = filterCategory.value;
@@ -181,7 +180,7 @@
           grid.appendChild(card);
         });
 
-        // delegated event handling for action buttons
+      
         grid.querySelectorAll('button').forEach(btn => btn.addEventListener('click', handleCardAction));
       }
 
@@ -215,7 +214,7 @@
         }
       }
 
-      // storage helpers
+      
       function loadData(){
         try {
           const raw = localStorage.getItem(STORAGE_KEY);
@@ -234,3 +233,4 @@
   </script>
 </body>
 </html>
+
