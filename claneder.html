@@ -1,149 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weekly Schedule Time Table</title>
-    <style>
-        /* General Styling */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fcf9f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 20px;
-        }
-
-        /* --- Schedule Container using CSS Grid --- */
-        .schedule-container {
-            display: grid;
-            /* 6 columns: 1 auto-sized for time labels, 5 equal-sized for days */
-            grid-template-columns: auto repeat(5, 1fr);
-            /* 8 rows: 1 for header, 7 for time slots */
-            grid-template-rows: repeat(8, auto);
-            gap: 8px; /* Space between cells */
-            max-width: 900px; 
-            width: 100%;
-            padding: 20px;
-        }
-
-        /* Base Cell Styling */
-        .cell {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 12px 10px;
-            border-radius: 25px; /* Creates the pill shape */
-            font-size: 0.9em;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-            transition: transform 0.2s; /* Subtle hover effect */
-        }
-        
-        .cell:hover {
-            transform: translateY(-1px);
-        }
-
-        /* --- Header Row Styling (Days) --- */
-        .header-cell {
-            font-weight: bold;
-            color: white;
-            font-size: 1.1em;
-            padding: 15px 10px;
-        }
-
-        .day-header {
-            background-color: #ff99aa; /* Pink for day headers */
-        }
-
-        .time-header {
-            /* Top-left corner is left empty */
-            background: none; 
-            box-shadow: none;
-        }
-
-        /* --- Time Label Styling (Left Column) --- */
-        .time-label {
-            font-weight: bold;
-            color: white;
-            font-size: 1em;
-            background-color: #99cccc; /* Light blue color for time labels */
-        }
-
-        /* --- Subject Cell Styling --- */
-        .pink-cell {
-            background-color: #ffcce5; /* Light pink subject cells */
-            color: #663366;
-        }
-
-        .yellow-cell {
-            background-color: #ffeeaa; /* Light yellow subject cells */
-            color: #cc9900;
-        }
-    </style>
+    <title>LoRaWAN Use Cases</title>
 </head>
 <body>
 
-    <div class="schedule-container">
-        <div class="cell header-cell time-header"></div>
-        <div class="cell header-cell day-header">Monday</div>
-        <div class="cell header-cell day-header">Tuesday</div>
-        <div class="cell header-cell day-header">Wednesday</div>
-        <div class="cell header-cell day-header">Thursday</div>
-        <div class="cell header-cell day-header">Friday</div>
+<h2>LoRaWAN Use Cases</h2>
 
-        <div class="cell time-label">08:00</div>
-        <div class="cell pink-cell">Maths</div>
-        <div class="cell yellow-cell">English</div>
-        <div class="cell pink-cell">Science</div>
-        <div class="cell yellow-cell">PT</div>
-        <div class="cell pink-cell">Art</div>
+<!-- TAGS (Clickable Anchors) -->
+<p>
+    <a href="#vaccine">Vaccine Cold Chain</a> | 
+    <a href="#animal">Animal Conservation</a> |
+    <a href="#dementia">Dementia Patients</a> |
+    <a href="#smartfarms">Smart Farms</a> |
+    <a href="#water">Water Conservation</a> |
+    <a href="#food">Food Safety</a> |
+    <a href="#waste">Smart Waste Bins</a> |
+    <a href="#bikes">Smart Bikes</a> |
+    <a href="#airport">Airport Tracking</a> |
+    <a href="#workspace">Efficient Workspaces</a> |
+    <a href="#cattle">Cattle Health</a> |
+    <a href="#space">LoRa in Space</a>
+</p>
 
-        <div class="cell time-label">09:00</div>
-        <div class="cell yellow-cell">English</div>
-        <div class="cell pink-cell">Maths</div>
-        <div class="cell yellow-cell">Social Studies</div>
-        <div class="cell pink-cell">Music</div>
-        <div class="cell yellow-cell">Library</div>
+<hr>
 
-        <div class="cell time-label">10:00</div>
-        <div class="cell pink-cell">Science</div>
-        <div class="cell yellow-cell">PT</div>
-        <div class="cell pink-cell">Break</div>
-        <div class="cell yellow-cell">Maths</div>
-        <div class="cell pink-cell">Exams</div>
+<!-- SECTIONS -->
 
-        <div class="cell time-label">11:00</div>
-        <div class="cell yellow-cell">Break</div>
-        <div class="cell pink-cell">Hindi</div>
-        <div class="cell yellow-cell">English</div>
-        <div class="cell pink-cell">Science</div>
-        <div class="cell yellow-cell">Maths</div>
-        
-        <div class="cell time-label">12:00</div>
-        <div class="cell pink-cell">Social Studies</div>
-        <div class="cell yellow-cell">Art</div>
-        <div class="cell pink-cell">Maths</div>
-        <div class="cell yellow-cell">English</div>
-        <div class="cell pink-cell">PT</div>
+<h3 id="vaccine">Vaccine Cold Chain Monitoring</h3>
+<p>LoRaWAN sensors ensure vaccines remain at safe temperatures during transport.</p>
 
-        <div class="cell time-label">13:00</div>
-        <div class="cell yellow-cell">Music</div>
-        <div class="cell pink-cell">Science</div>
-        <div class="cell yellow-cell">Hindi</div>
-        <div class="cell pink-cell">Social Studies</div>
-        <div class="cell yellow-cell">Reading</div>
+<h3 id="animal">Animal Conservation</h3>
+<p>Tracking sensors help protect endangered species like Black Rhinos and Amur Leopards.</p>
 
-        <div class="cell time-label">14:00</div>
-        <div class="cell pink-cell">Library</div>
-        <div class="cell yellow-cell">Exams</div>
-        <div class="cell pink-cell">PT</div>
-        <div class="cell yellow-cell">Art</div>
-        <div class="cell pink-cell">Hindi</div>
+<h3 id="dementia">Dementia Patients</h3>
+<p>Wristband sensors detect falls and track medication intake.</p>
 
-    </div>
+<h3 id="smartfarms">Smart Farms</h3>
+<p>Real-time soil moisture data helps optimize irrigation and reduce water use by up to 30%.</p>
+
+<h3 id="water">Water Conservation</h3>
+<p>LoRaWAN enables early detection of leaks in city water networks.</p>
+
+<h3 id="food">Food Safety</h3>
+<p>Temperature monitoring ensures that food stays within safe quality standards.</p>
+
+<h3 id="waste">Smart Waste Bins</h3>
+<p>Bin-level alerts help optimize waste collection routes.</p>
+
+<h3 id="bikes">Smart Bikes</h3>
+<p>Bike trackers locate bikes in remote or dense urban areas.</p>
+
+<h3 id="airport">Airport Tracking</h3>
+<p>GPS-free tracking helps monitor vehicles, staff, and luggage.</p>
+
+<h3 id="workspace">Efficient Workspaces</h3>
+<p>Monitoring room occupancy, temperature, energy use, and parking availability.</p>
+
+<h3 id="cattle">Cattle Health</h3>
+<p>Sensors detect cattle diseases early and predict calf delivery times.</p>
+
+<h3 id="space">LoRa in Space</h3>
+<p>Satellites provide global LoRaWAN coverage even in remote regions.</p>
 
 </body>
 </html>
