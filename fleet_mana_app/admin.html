@@ -1,10 +1,15 @@
+<<<<<<< HEAD
 
   
 <!doctype html>
+=======
+<!DOCTYPE html>
+>>>>>>> e80c798 (admin half)
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+<<<<<<< HEAD
   <title>Admin - Fleet Management</title>
   <style>
     :root{--accent:#2b7cff;--muted:#666;}
@@ -34,14 +39,47 @@
     .empty{grid-column:1/-1;color:#666;padding:12px}
     @media (max-width:1000px){ .grid{grid-template-columns:repeat(2,1fr)} aside{width:260px} }
     @media (max-width:640px){ .container{flex-direction:column} .grid{grid-template-columns:repeat(1,1fr)} aside{width:100%} header{flex-wrap:wrap} }
+=======
+  <title>Admin - Mini Fleet</title>
+  <style>
+    :root{--accent:#0b6cff;--muted:#6b7280}
+    body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f5f7fb;color:#222}
+    header{background:#fff;padding:10px 18px;border-bottom:1px solid #e6e9ef;display:flex;gap:12px;align-items:center}
+    header h2{margin:0;font-size:18px}
+    .filters{margin-left:auto;display:flex;gap:8px;align-items:center}
+    select,button,input[type="text"]{padding:6px;border:1px solid #cfd6e3;border-radius:6px}
+    button{background:var(--accent);color:#fff;border:0;cursor:pointer}
+    .container{display:grid;grid-template-columns:260px 1fr;gap:18px;padding:18px}
+    aside{background:#fff;padding:14px;border-radius:8px;border:1px solid #edf0f6}
+    main{min-height:60vh}
+    form .row{margin-bottom:10px}
+    label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .card{background:#fff;padding:12px;border-radius:8px;border:1px solid #eef2f7;box-shadow:0 4px 10px rgba(0,0,0,.03);display:flex;flex-direction:column;gap:8px}
+    .card img{width:100%;height:110px;object-fit:cover;border-radius:6px;background:#f0f4ff}
+    .meta{font-size:13px;color:#333}
+    .meta b{display:inline-block;width:95px;color:#444}
+    .actions{display:flex;gap:6px;margin-top:6px}
+    .actions button{flex:1;padding:8px;font-size:13px;border-radius:6px}
+    .small{font-size:12px;color:var(--muted)}
+    @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.container{grid-template-columns:1fr};.grid{grid-template-columns:1fr}}
+>>>>>>> e80c798 (admin half)
   </style>
 </head>
 <body>
   <header>
+<<<<<<< HEAD
     <h2>Fleet Admin Dashboard</h2>
     <div class="filters">
       <label for="filterCategory">Category</label>
       <select id="filterCategory" aria-label="Filter by category">
+=======
+    <h2>Mini Fleet — Admin</h2>
+    <div class="filters">
+      <label class="small" for="filterCategory">Category</label>
+      <select id="filterCategory">
+>>>>>>> e80c798 (admin half)
         <option value="All">All</option>
         <option>Auto</option>
         <option>Car</option>
@@ -49,13 +87,19 @@
         <option>Bus</option>
       </select>
 
+<<<<<<< HEAD
       <label for="filterAvail">Availability</label>
       <select id="filterAvail" aria-label="Filter by availability">
+=======
+      <label class="small" for="filterAvail">Availability</label>
+      <select id="filterAvail">
+>>>>>>> e80c798 (admin half)
         <option value="All">All</option>
         <option>Available</option>
         <option>Unavailable</option>
       </select>
 
+<<<<<<< HEAD
       <button class="filter-clear" id="clearFilters" title="Reset filters">Clear Filter</button>
     </div>
   </header>
@@ -234,3 +278,6 @@
   </script>
 </body>
 </html>
+=======
+      
+>>>>>>> e80c798 (admin half)
