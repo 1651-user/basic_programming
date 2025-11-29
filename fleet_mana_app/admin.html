@@ -1,3 +1,5 @@
+
+  
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,11 +11,12 @@
     body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f3f5f7;color:#222;min-height:100vh;}
     header{background:#fff;border-bottom:1px solid #e1e4e8;padding:12px 20px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:3}
     header h2{margin:0;font-size:18px}
-    .filters{margin-left:auto;display:flex;gap:8px;align-items:center}
+    .filters{margin-left:auto;display:flex;gap:12px;align-items:center}
+    .filters label{font-size:13px;color:var(--muted);margin-right:6px}
     select, button.filter-clear{padding:6px 8px;border:1px solid #d0d7de;border-radius:4px;background:#fff}
     button.filter-clear{background:#fff;color:var(--muted);cursor:pointer}
     .container{display:flex;gap:18px;padding:18px;align-items:flex-start}
-    aside{width:300px;background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+    aside{width:320px;background:#fff;padding:18px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
     main{flex:1}
     form label{display:block;margin-top:10px;font-size:13px;color:var(--muted)}
     input[type="text"], select, input[type="checkbox"]{width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;box-sizing:border-box}
@@ -28,6 +31,7 @@
     .badge{display:inline-block;padding:4px 8px;border-radius:12px;font-size:12px}
     .avail{background:#e6f4ea;color:#0b6a2a}
     .unavail{background:#fff2f2;color:#a00}
+    .empty{grid-column:1/-1;color:#666;padding:12px}
     @media (max-width:1000px){ .grid{grid-template-columns:repeat(2,1fr)} aside{width:260px} }
     @media (max-width:640px){ .container{flex-direction:column} .grid{grid-template-columns:repeat(1,1fr)} aside{width:100%} header{flex-wrap:wrap} }
   </style>
@@ -36,42 +40,48 @@
   <header>
     <h2>Fleet Admin Dashboard</h2>
     <div class="filters">
-      <label for="filterCategory" style="font-size:13px;color:var(--muted);margin-right:6px">Category</label>
-      <select id="filterCategory">
+      <label for="filterCategory">Category</label>
+      <select id="filterCategory" aria-label="Filter by category">
         <option value="All">All</option>
         <option>Auto</option>
         <option>Car</option>
         <option>Truck</option>
         <option>Bus</option>
       </select>
-      <label for="filterAvail" style="font-size:13px;color:var(--muted);margin-right:6px">Availability</label>
-      <select id="filterAvail">
+
+      <label for="filterAvail">Availability</label>
+      <select id="filterAvail" aria-label="Filter by availability">
         <option value="All">All</option>
         <option>Available</option>
         <option>Unavailable</option>
       </select>
-      <button class="filter-clear" id="clearFilters">Clear Filter</button>
+
+      <button class="filter-clear" id="clearFilters" title="Reset filters">Clear Filter</button>
     </div>
   </header>
 
   <div class="container">
     <aside>
       <h3 style="margin:0 0 8px">Add Fleet</h3>
-      <form id="fleetForm" onsubmit="return false;">
+      <form id="fleetForm" novalidate>
         <label for="regNo">Reg No of Vehicle *</label>
-        <input id="regNo" type="text" required placeholder="ABC-1234" />
+        <input id="regNo" name="regNo" type="text" required placeholder="ABC-1234" />
+
         <label for="category">Category *</label>
-        <select id="category" required>
+        <select id="category" name="category" required>
           <option value="">-- select --</option>
           <option>Auto</option>
           <option>Car</option>
           <option>Truck</option>
           <option>Bus</option>
         </select>
+
         <label for="driver">Driver Name *</label>
-        <input id="driver" type="text" required placeholder="Driver name" />
-        <label style="margin-top:8px"><input id="isAvailable" type="checkbox" checked /> Available</label>
-        <button class="btn-add" id="addBtn">Add Fleet</button>
+        <input id="driver" name="driver" type="text" required placeholder="Driver name" />
+
+        <label style="margin-top:8px"><input id="isAvailable" name="isAvailable" type="checkbox" checked /> Available</label>
+
+        <button class="btn-add" id="addBtn" type="submit">Add Fleet</button>
       </form>
     </aside>
 
@@ -82,16 +92,14 @@
   </div>
 
   <script>
-    // Minimal fleet app logic
     (function(){
       const STORAGE_KEY = 'fleetData_v1';
-      const defaultImage = 'https://via.placeholder.com/400x220?text=Vehicle';
+      const defaultImage = 'https://coding-platform.s3.amazonaws.com/dev/lms/tickets/5e80fcb6-3f8e-480c-945b-30a5359eb40e/JNmYjkVr3WOjsrbu.png';
       let fleet = loadData();
 
       // DOM
       const grid = document.getElementById('fleetGrid');
       const form = document.getElementById('fleetForm');
-      const addBtn = document.getElementById('addBtn');
       const filterCategory = document.getElementById('filterCategory');
       const filterAvail = document.getElementById('filterAvail');
       const clearFiltersBtn = document.getElementById('clearFilters');
@@ -99,8 +107,9 @@
       // initial render
       render();
 
-      // add
-      addBtn.addEventListener('click', function(){
+      // handle add via form submit (avoids button vs click issues)
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
         const reg = document.getElementById('regNo').value.trim();
         const category = document.getElementById('category').value;
         const driver = document.getElementById('driver').value.trim();
@@ -108,16 +117,19 @@
 
         // validation
         if(!reg || !category || !driver){
-          alert('Please fill required fields');
+          alert('Please fill all required fields.');
           return;
         }
 
-        // create new
+        // create & push
         const id = Date.now().toString();
         fleet.push({ id, reg, category, driver, available });
         saveData();
+
+        // clear form and keep checkbox default true
         form.reset();
         document.getElementById('isAvailable').checked = true;
+
         render();
       });
 
@@ -130,7 +142,7 @@
         render();
       });
 
-      // render function applies filters
+      // render applies filters and attaches delegated handlers
       function render(){
         grid.innerHTML = '';
         const cat = filterCategory.value;
@@ -146,7 +158,7 @@
         });
 
         if(filtered.length === 0){
-          grid.innerHTML = '<div style="grid-column:1/-1;color:#666;padding:12px">No vehicles found.</div>';
+          grid.innerHTML = '<div class="empty">No vehicles found.</div>';
           return;
         }
 
@@ -169,10 +181,8 @@
           grid.appendChild(card);
         });
 
-        // attach delegated listeners
-        grid.querySelectorAll('button').forEach(btn => {
-          btn.onclick = handleCardAction;
-        });
+        // delegated event handling for action buttons
+        grid.querySelectorAll('button').forEach(btn => btn.addEventListener('click', handleCardAction));
       }
 
       function handleCardAction(ev){
@@ -184,7 +194,7 @@
         if(action === 'update'){
           const current = fleet[idx].driver;
           const name = prompt('Enter driver name', current);
-          if(name === null) return; // cancelled
+          if(name === null) return;
           if(name.trim() === ''){
             alert('Driver name cannot be empty.');
             return;
@@ -211,7 +221,6 @@
           const raw = localStorage.getItem(STORAGE_KEY);
           if(raw) return JSON.parse(raw);
         } catch(e){}
-        // seed sample data
         return [
           { id:'1', reg:'KA-01-AB-1234', category:'Car', driver:'Ravi', available:true },
           { id:'2', reg:'MH-12-CD-4321', category:'Truck', driver:'Sita', available:false },
@@ -220,8 +229,8 @@
       }
       function saveData(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(fleet)); }
 
-      // simple escape to avoid injecting HTML from inputs
-      function escapeHtml(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-    }
-}
-    )
+      function escapeHtml(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+    })();
+  </script>
+</body>
+</html>
