@@ -1,549 +1,560 @@
-/* ==================== CSS Variables ==================== */
 :root {
-  /* Light Theme */
-  --light-bg: #f5f7fa;
-  --light-surface: #ffffff;
-  --light-text: #1a202c;
-  --light-text-secondary: #4a5568;
-  --light-border: #e2e8f0;
-  --light-shadow: rgba(0, 0, 0, 0.1);
-  
-  /* Dark Theme */
-  --dark-bg: #0f172a;
-  --dark-surface: #1e293b;
-  --dark-text: #f1f5f9;
-  --dark-text-secondary: #cbd5e1;
-  --dark-border: #334155;
-  --dark-shadow: rgba(0, 0, 0, 0.3);
-  
-  /* Accent Colors */
-  --primary: #6366f1;
-  --primary-hover: #4f46e5;
-  --success: #10b981;
-  --danger: #ef4444;
-  --warning: #f59e0b;
+    /* Light Theme */
+    --light-bg: #f5f7fa;
+    --light-surface: #ffffff;
+    --light-text: #1a202c;
+    --light-text-secondary: #4a5568;
+    --light-border: #e2e8f0;
+    --light-shadow: rgba(0, 0, 0, 0.1);
+
+    /* Dark Theme */
+    --dark-bg: #0f172a;
+    --dark-surface: #1e293b;
+    --dark-text: #f1f5f9;
+    --dark-text-secondary: #cbd5e1;
+    --dark-border: #334155;
+    --dark-shadow: rgba(0, 0, 0, 0.3);
+
+    /* Accent Colors */
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --success: #10b981;
+    --danger: #d62424;
+    --warning: #f59e0b;
 }
 
-/* ==================== Global Styles ==================== */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* ==================== App Container ==================== */
 .app {
-  min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .app.light {
-  background-color: var(--light-bg);
-  color: var(--light-text);
+    background-color: var(--light-bg);
+    color: var(--light-text);
 }
 
 .app.dark {
-  background-color: var(--dark-bg);
-  color: var(--dark-text);
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
 }
 
-/* ==================== Header ==================== */
 .app-header {
-  padding: 2rem 1rem;
-  border-bottom: 1px solid;
-  transition: all 0.3s ease;
+    padding: 2rem 1rem;
+    border-bottom: 1px solid;
+    transition: all 0.3s ease;
 }
 
 .app.light .app-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-  color: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    color: white;
 }
 
 .app.dark .app-header {
-  background: linear-gradient(135deg, #4c1d95 0%, #5b21b6 100%);
-  border-bottom-color: var(--dark-border);
-  color: var(--dark-text);
+    background: linear-gradient(135deg, #4c1d95 0%, #5b21b6 100%);
+    border-bottom-color: var(--dark-border);
+    color: var(--dark-text);
 }
 
 .header-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .header-left h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
 }
 
 .subtitle {
-  font-size: 1rem;
-  opacity: 0.9;
+    font-size: 1rem;
+    opacity: 0.9;
 }
 
-/* ==================== Theme Toggle ==================== */
 .theme-toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .app.light .theme-toggle {
-  background: white;
-  color: var(--light-text);
+    background: white;
+    color: var(--light-text);
 }
 
 .app.dark .theme-toggle {
-  background: var(--dark-surface);
-  color: var(--dark-text);
-  border: 1px solid var(--dark-border);
+    background: var(--dark-surface);
+    color: var(--dark-text);
+    border: 1px solid var(--dark-border);
 }
 
 .theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .theme-icon {
-  font-size: 1.25rem;
+    font-size: 1.25rem;
 }
 
-/* ==================== Main Content ==================== */
+
 .app-main {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  min-height: calc(100vh - 250px);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    min-height: calc(100vh - 250px);
 }
 
-/* ==================== Loading State ==================== */
+
 .loading-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 1rem;
-  gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1rem;
+    gap: 1rem;
 }
 
 .spinner {
-  width: 50px;
-  height: 50px;
-  border: 4px solid;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+    width: 50px;
+    height: 50px;
+    border: 4px solid;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
 }
 
 .app.light .spinner {
-  border-color: var(--light-border);
-  border-top-color: var(--primary);
+    border-color: var(--light-border);
+    border-top-color: var(--primary);
 }
 
 .app.dark .spinner {
-  border-color: var(--dark-border);
-  border-top-color: var(--primary);
+    border-color: var(--dark-border);
+    border-top-color: var(--primary);
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-/* ==================== Posts Grid ==================== */
+
 .posts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 1.5rem;
-  animation: fadeIn 0.5s ease;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+    animation: fadeIn 0.5s ease;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* ==================== Post Card ==================== */
+
 .post-card {
-  padding: 1.5rem;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  border: 1px solid;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .app.light .post-card {
-  background: var(--light-surface);
-  border-color: var(--light-border);
-  box-shadow: 0 2px 4px var(--light-shadow);
+    background: var(--light-surface);
+    border-color: var(--light-border);
+    box-shadow: 0 2px 4px var(--light-shadow);
 }
 
 .app.dark .post-card {
-  background: var(--dark-surface);
-  border-color: var(--dark-border);
-  box-shadow: 0 2px 4px var(--dark-shadow);
+    background: var(--dark-surface);
+    border-color: var(--dark-border);
+    box-shadow: 0 2px 4px var(--dark-shadow);
 }
 
 .post-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(99, 102, 241, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(99, 102, 241, 0.2);
 }
 
 .post-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .post-id {
-  font-size: 0.875rem;
-  font-weight: 600;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  background: var(--primary);
-  color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    background: var(--primary);
+    color: white;
 }
 
 .post-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.4;
-  text-transform: capitalize;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-transform: capitalize;
 }
 
 .app.light .post-title {
-  color: var(--light-text);
+    color: var(--light-text);
 }
 
 .app.dark .post-title {
-  color: var(--dark-text);
+    color: var(--dark-text);
 }
 
 .post-body {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  flex-grow: 1;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    flex-grow: 1;
 }
 
 .app.light .post-body {
-  color: var(--light-text-secondary);
+    color: var(--light-text-secondary);
 }
 
 .app.dark .post-body {
-  color: var(--dark-text-secondary);
+    color: var(--dark-text-secondary);
 }
 
 .post-actions {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: auto;
+    display: flex;
+    gap: 0.75rem;
+    margin-top: auto;
 }
 
-/* ==================== Buttons ==================== */
+
 .btn {
-  padding: 0.625rem 1.25rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .btn-edit {
-  background: var(--primary);
-  color: white;
-  flex: 1;
+    background: var(--primary);
+    color: white;
+    flex: 1;
 }
 
 .btn-edit:hover {
-  background: var(--primary-hover);
-  transform: scale(1.05);
+    background: var(--primary-hover);
+    color: rgb(112, 38, 134);
+    transform: scale(1.05);
 }
 
 .btn-delete {
-  background: var(--danger);
-  color: white;
-  flex: 1;
+    background: var(--danger);
+    color: white;
+    flex: 1;
 }
 
 .btn-delete:hover {
-  background: #dc2626;
-  transform: scale(1.05);
+    background: #dc2626;
+    transform: scale(1.05);
 }
 
 .btn-primary {
-  background: var(--primary);
-  color: white;
+    background: var(--primary);
+    color: white;
 }
 
 .btn-primary:hover {
-  background: var(--primary-hover);
+    background: var(--primary-hover);
 }
 
 .btn-secondary {
-  background: transparent;
-  border: 2px solid;
+    background: transparent;
+    border: 2px solid;
 }
 
 .app.light .btn-secondary {
-  border-color: var(--light-border);
-  color: var(--light-text);
+    border-color: var(--light-border);
+    color: var(--light-text);
 }
 
 .app.dark .btn-secondary {
-  border-color: var(--dark-border);
-  color: var(--dark-text);
+    border-color: var(--dark-border);
+    color: var(--dark-text);
 }
 
 .btn-secondary:hover {
-  background: rgba(99, 102, 241, 0.1);
+    background: rgba(99, 102, 241, 0.1);
 }
 
-/* ==================== Modal ==================== */
+
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 1rem;
-  animation: fadeIn 0.2s ease;
-  backdrop-filter: blur(4px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+    animation: fadeIn 0.2s ease;
+    backdrop-filter: blur(4px);
 }
 
 .modal-content {
-  border-radius: 16px;
-  max-width: 600px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  animation: slideUp 0.3s ease;
-  border: 1px solid;
+    border-radius: 16px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease;
+    border: 1px solid;
 }
 
 .app.light .modal-content {
-  background: var(--light-surface);
-  border-color: var(--light-border);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    background: var(--light-surface);
+    border-color: var(--light-border);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
 .app.dark .modal-content {
-  background: var(--dark-surface);
-  border-color: var(--dark-border);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+    background: var(--dark-surface);
+    border-color: var(--dark-border);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes slideUp {
-  from { transform: translateY(50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem;
-  border-bottom: 1px solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid;
 }
 
 .app.light .modal-header {
-  border-bottom-color: var(--light-border);
+    border-bottom-color: var(--light-border);
 }
 
 .app.dark .modal-header {
-  border-bottom-color: var(--dark-border);
+    border-bottom-color: var(--dark-border);
 }
 
 .modal-header h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .close-btn {
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  color: inherit;
-  opacity: 0.6;
-  transition: opacity 0.2s;
-  padding: 0;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .close-btn:hover {
-  opacity: 1;
+    opacity: 1;
 }
 
 .modal-body {
-  padding: 1.5rem;
+    padding: 1.5rem;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  font-size: 0.95rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
 }
 
 .form-group input,
 .form-group textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 2px solid;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-family: inherit;
-  transition: all 0.2s ease;
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
 }
 
 .app.light .form-group input,
 .app.light .form-group textarea {
-  background: var(--light-surface);
-  border-color: var(--light-border);
-  color: var(--light-text);
+    background: var(--light-surface);
+    border-color: var(--light-border);
+    color: var(--light-text);
 }
 
 .app.dark .form-group input,
 .app.dark .form-group textarea {
-  background: var(--dark-bg);
-  border-color: var(--dark-border);
-  color: var(--dark-text);
+    background: var(--dark-bg);
+    border-color: var(--dark-border);
+    color: var(--dark-text);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
 .form-group textarea {
-  resize: vertical;
-  min-height: 120px;
+    resize: vertical;
+    min-height: 120px;
 }
 
 .modal-footer {
-  display: flex;
-  gap: 1rem;
-  padding: 1.5rem;
-  border-top: 1px solid;
-  justify-content: flex-end;
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-top: 1px solid;
+    justify-content: flex-end;
 }
 
 .app.light .modal-footer {
-  border-top-color: var(--light-border);
+    border-top-color: var(--light-border);
 }
 
 .app.dark .modal-footer {
-  border-top-color: var(--dark-border);
+    border-top-color: var(--dark-border);
 }
 
-/* ==================== Footer ==================== */
+
 .app-footer {
-  text-align: center;
-  padding: 2rem 1rem;
-  border-top: 1px solid;
-  margin-top: 2rem;
+    text-align: center;
+    padding: 2rem 1rem;
+    border-top: 1px solid;
+    margin-top: 2rem;
 }
 
 .app.light .app-footer {
-  border-top-color: var(--light-border);
-  color: var(--light-text-secondary);
+    border-top-color: var(--light-border);
+    color: var(--light-text-secondary);
 }
 
 .app.dark .app-footer {
-  border-top-color: var(--dark-border);
-  color: var(--dark-text-secondary);
+    border-top-color: var(--dark-border);
+    color: var(--dark-text-secondary);
 }
 
-/* ==================== Empty State ==================== */
 .empty-state {
-  text-align: center;
-  padding: 4rem 1rem;
-  font-size: 1.125rem;
+    text-align: center;
+    padding: 4rem 1rem;
+    font-size: 1.125rem;
 }
 
 .app.light .empty-state {
-  color: var(--light-text-secondary);
+    color: var(--light-text-secondary);
 }
 
 .app.dark .empty-state {
-  color: var(--dark-text-secondary);
+    color: var(--dark-text-secondary);
 }
 
-/* ==================== Responsive Design ==================== */
+
 @media (max-width: 768px) {
-  .header-left h1 {
-    font-size: 2rem;
-  }
-  
-  .posts-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .theme-text {
-    display: none;
-  }
-  
-  .modal-content {
-    margin: 1rem;
-  }
+    .header-left h1 {
+        font-size: 2rem;
+    }
+
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .theme-text {
+        display: none;
+    }
+
+    .modal-content {
+        margin: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
-  .header-left h1 {
-    font-size: 1.5rem;
-  }
-  
-  .post-actions {
-    flex-direction: column;
-  }
-  
-  .modal-footer {
-    flex-direction: column-reverse;
-  }
-  
-  .modal-footer .btn {
-    width: 100%;
-  }
+    .header-left h1 {
+        font-size: 1.5rem;
+    }
+
+    .post-actions {
+        flex-direction: column;
+    }
+
+    .modal-footer {
+        flex-direction: column-reverse;
+    }
+
+    .modal-footer .btn {
+        width: 100%;
+    }
 }
