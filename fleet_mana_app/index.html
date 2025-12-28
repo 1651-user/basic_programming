@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - Fleet App</title>
+  <style>
+    /* Basic minimal styling */
+    body { font-family: Arial, Helvetica, sans-serif; background:#f7f7f7; margin:0; padding:0; display:flex; align-items:center; justify-content:center; height:100vh; }
+    .card { background:#fff; padding:24px; border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,0.08); width:360px; }
+    h1 { margin:0 0 16px; font-size:20px; }
+    label { display:block; margin:12px 0 6px; font-size:13px; }
+    input[type="email"], input[type="password"] { width:100%; padding:10px; border:1px solid #ddd; border-radius:4px; box-sizing:border-box; }
+    button { margin-top:16px; width:100%; padding:10px; border:0; border-radius:4px; background:#2b7cff; color:#fff; cursor:pointer; font-weight:600; }
+    .hint { margin-top:12px; font-size:13px; color:#666; }
+  </style>
+</head>
+<body>
+  <div class="card" role="main">
+    <h1>Fleet Management - Admin Login</h1>
+    <form id="loginForm" onsubmit="return false;">
+      <label for="email">Email</label>
+      <input id="email" type="email" required placeholder="admin@gmail.com" />
+      <label for="password">Password</label>
+      <input id="password" type="password" required placeholder="admin1234" />
+      <button id="loginBtn" type="submit">Login</button>
+      <div class="hint">Use: admin@gmail.com / admin1234</div>
+    </form>
+  </div>
+
+  <script>
+    // minimal login logic per spec
+    (function(){
+      const validEmail = 'admin@gmail.com';
+      const validPassword = 'admin1234';
+      const form = document.getElementById('loginForm');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const email = document.getElementById('email').value.trim();
+        const pwd = document.getElementById('password').value;
+        if(email === validEmail && pwd === validPassword){
+          alert('Login success');
+          location.href = 'admin.html';
+        } else {
+          alert('Wrong email or password');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Management Page (Merged)</title>
+    
+    <style>
+        /* Basic Reset and Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        h1, h2 {
+            color: #007bff;
+            text-align: center;
+        }
+
+        /* Header and Navigation */
+        .header {
+            background-color: #ffffff;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        .nav-button, .submit-button, .control-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-button:hover, .submit-button:hover, .control-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Home Page Structure (for the link to "Home") */
+        .home-page {
+            /* This style is not needed in the admin.html, but kept for completeness if used separately */
+        }
+        
+        .main-content {
+            padding: 20px;
+        }
+
+        /* Form Styling */
+        .add-book-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"], .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* Control Panel (Sort and Filter) */
+        .control-panel {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 15px 0;
+            margin-bottom: 20px;
+        }
+
+        .sort-options, .filter-options {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 5px 0;
+        }
+
+        .control-select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Book Grid Display */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .book-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            overflow: hidden;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .book-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-details {
+            padding: 15px;
+        }
+
+        .book-title {
+            margin-top: 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .delete-button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <button onclick="alert('This would go to index.html');" class="nav-button">
+            Go to Home Page
+        </button>
+        <h1>Book Management Page</h1>
+    </header>
+
+    <main class="container">
+        <section class="add-book-section">
+            <h2>Add Book</h2>
+            <form id="addBookForm">
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <select id="category" required>
+                        <option value="" disabled selected>Select Category</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Technical">Technical</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-button">Add Book</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <section class="control-panel">
+            <h2>Book Operations</h2>
+
+            <div class="sort-options">
+                <label>Sort by Title:</label>
+                <button id="sortAsc" class="control-button">A → Z</button>
+                <button id="sortDesc" class="control-button">Z → A</button>
+            </div>
+
+            <div class="filter-options">
+                <label for="filterCategory">Filter by Category:</label>
+                <select id="filterCategory" class="control-select">
+                    <option value="All">All</option>
+                    <option value="Fiction">Fiction</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Technical">Technical</option>
+                </select>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Available Books</h2>
+            <div id="booksGrid" class="books-grid">
+                </div>
+        </section>
+    </main>
+
+    <script>
+        // Global array to store book objects
+        let booksData = [];
+
+        // Fixed image URL as per instructions
+        const BOOK_IMAGE_URL = "https://m.media-amazon.com/images/I/71ZB18B3P3L._SY522_.jpg";
+
+        // Load books from localStorage on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const storedBooks = localStorage.getItem('booksData');
+            if (storedBooks) {
+                booksData = JSON.parse(storedBooks);
+            }
+            // Initial render of all books
+            renderBooks(booksData);
+            
+            // Attach event listeners for controls
+            setupEventListeners();
+        });
+
+        /**
+         * Saves the current state of booksData to localStorage.
+         */
+        function saveBooks() {
+            localStorage.setItem('booksData', JSON.stringify(booksData));
+        }
+
+        /**
+         * Creates and returns an HTML card element for a single book object.
+         * @param {object} book - The book object.
+         * @param {number} index - The index of the book in the booksData array.
+         * @returns {HTMLElement} The book card element.
+         */
+        function createBookCard(book, index) {
+            const card = document.createElement('div');
+            card.classList.add('book-card');
+            card.setAttribute('data-index', index); // Use index for deletion
+
+            card.innerHTML = `
+                <img src="${book.imageUrl}" alt="Book Cover" class="book-image">
+                <div class="card-details">
+                    <h3 class="book-title">${book.title}</h3>
+                    <p><strong>Author:</strong> ${book.author}</p>
+                    <p><strong>Category:</strong> ${book.category}</p>
+                    <button class="delete-button" data-index="${index}">Delete</button>
+                </div>
+            `;
+
+            // Attach delete event listener to the button in the card
+            const deleteButton = card.querySelector('.delete-button');
+            deleteButton.addEventListener('click', (e) => {
+                // Get the index from the button's data attribute
+                const bookIndex = parseInt(e.target.getAttribute('data-index'));
+                deleteBook(bookIndex);
+            });
+
+            return card;
+        }
+
+        /**
+         * Renders the array of books into the grid layout.
+         * @param {Array<object>} booksToRender - The array of books to display.
+         */
+        function renderBooks(booksToRender) {
+            const booksGrid = document.getElementById('booksGrid');
+            booksGrid.innerHTML = ''; // Clear previous content
+
+            booksToRender.forEach((book, index) => {
+                // Find the original index for correct deletion, since the current index 
+                // might be from a filtered/sorted array
+                const originalIndex = booksData.findIndex(b => 
+                    b.title === book.title && 
+                    b.author === book.author &&
+                    b.category === book.category
+                );
+                
+                if (originalIndex !== -1) {
+                    const card = createBookCard(book, originalIndex);
+                    booksGrid.appendChild(card);
+                }
+            });
+        }
+
+        /**
+         * Handles the submission of the Add Book form.
+         * @param {Event} e - The form submission event.
+         */
+        function handleAddBook(e) {
+            e.preventDefault();
+
+            const titleInput = document.getElementById('title');
+            const authorInput = document.getElementById('author');
+            const categoryInput = document.getElementById('category');
+
+            const newBook = {
+                title: titleInput.value.trim(),
+                author: authorInput.value.trim(),
+                category: categoryInput.value,
+                imageUrl: BOOK_IMAGE_URL
+            };
+
+            // Add it to the array
+            booksData.push(newBook);
+            saveBooks();
+
+            // Re-render the UI to display the new book
+            filterAndRender(); 
+
+            // Reset the form fields
+            e.target.reset(); 
+            // Set category back to default prompt
+            categoryInput.value = ""; 
+        }
+
+        /**
+         * Deletes a book from the array and re-renders the UI.
+         * @param {number} index - The index of the book to delete in the booksData array.
+         */
+        function deleteBook(index) {
+            if (index > -1 && index < booksData.length) {
+                // Remove book from the array
+                booksData.splice(index, 1);
+                saveBooks();
+
+                // Re-render UI based on the current filter/sort state
+                filterAndRender(); 
+            }
+        }
+
+        /**
+         * Sorts the booksData array by title.
+         * @param {string} direction - 'asc' for A->Z, 'desc' for Z->A.
+         */
+        function sortBooks(direction) {
+            booksData.sort((a, b) => {
+                const titleA = a.title.toLowerCase();
+                const titleB = b.title.toLowerCase();
+
+                if (titleA < titleB) {
+                    return direction === 'asc' ? -1 : 1;
+                }
+                if (titleA > titleB) {
+                    return direction === 'asc' ? 1 : -1;
+                }
+                return 0; // Titles are equal
+            });
+
+            // Re-render the filtered or full list after sorting
+            filterAndRender();
+        }
+
+        /**
+         * Filters the booksData array based on the selected category.
+         * @returns {Array<object>} The filtered array of books.
+         */
+        function filterBooks() {
+            const filterValue = document.getElementById('filterCategory').value;
+            
+            if (filterValue === 'All') {
+                return booksData;
+            } else {
+                return booksData.filter(book => book.category === filterValue);
+            }
+        }
+
+        /**
+         * Applies the current filter and renders the resulting list.
+         */
+        function filterAndRender() {
+            const filteredBooks = filterBooks();
+            renderBooks(filteredBooks);
+        }
+
+        /**
+         * Sets up all necessary DOM event listeners.
+         */
+        function setupEventListeners() {
+            // 1. Add Book Form Submission
+            document.getElementById('addBookForm').addEventListener('submit', handleAddBook);
+
+            // 2. Sort Buttons
+            document.getElementById('sortAsc').addEventListener('click', () => sortBooks('asc'));
+            document.getElementById('sortDesc').addEventListener('click', () => sortBooks('desc'));
+
+            // 3. Filter Dropdown Change
+            document.getElementById('filterCategory').addEventListener('change', filterAndRender);
+        }
+    </script>
+</body>
+</html>

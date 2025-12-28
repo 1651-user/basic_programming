@@ -1,0 +1,454 @@
+<TYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Section Clone</title>
+
+    <style>
+        body {
+                  margin: 0;
+                  font-family: Arial, sans-serif;
+                  background: #fafafa;
+              }
+
+
+            .explore-title {
+                  font-size: 30px;
+                  font-weight: 700;
+                  margin: 40px 60px 20px;
+                  font-family: Georgia, serif;
+              }
+
+            .explore-grid {
+                  display: grid;
+                  grid-template-columns: repeat(4, 1fr);
+                  gap: 25px;
+                  padding: 0 60px 60px;
+              }
+
+            .explore-grid > div {
+                  background: #fff;
+                  padding: 25px 20px 25px;
+                  text-align: center;
+                  border: 1px solid #e5e5e5;
+              }
+
+            .explore-grid img {
+                  width: 70px;
+                  margin-bottom: 18px;
+              }
+
+            .explore-grid h3 {
+                  font-size: 18px;
+                  margin: 0 0 10px;
+                  font-weight: 700;
+                  font-family: Georgia, serif;
+              }
+
+            .explore-grid p {
+                  font-size: 14px;
+                  margin: 0 10px 20px;
+                  line-height: 1.4;
+              }
+
+            .explore-grid .btn {
+                  color: #d16ac0;
+                  text-transform: uppercase;
+                  font-size: 13px;
+                  padding-top: 12px;
+                  border-top: 1px solid #ccc;
+                  cursor: pointer;
+              }
+
+            /* ---------------------- ORDER (RED SECTION) ---------------------- */
+
+            .order-title {
+                  font-size: 28px;
+                  margin: 40px 60px 25px;
+                  font-weight: 700;
+              }
+
+            .order-grid {
+                  display: grid;
+                  grid-template-columns: repeat(3, 1fr);
+                  gap: 25px;
+                  padding: 0 60px 60px;
+              }
+
+            .order-grid > div {
+                  background: #d16ac0;
+                  padding: 25px 20px 40px;
+                  text-align: center;
+                  border: 1px solid #ddd;
+                  color: white;
+              }
+
+            .order-grid img {
+                  width: 160px;
+                  background: white;
+                  padding: 8px;
+                  border-radius: 4px;
+              }
+
+            .order-grid h3 {
+                  font-size: 20px;
+                  margin: 20px 0 10px;
+                  font-weight: 700;
+              }
+
+            .order-grid p {
+                  font-size: 15px;
+                  line-height: 1.25;
+                  margin: 12px 5px 25px;
+              }
+
+            .order-grid button {
+                  background: white;
+                  padding: 10px 22px;
+                  border: none;
+                  font-weight: bold;
+                  cursor: pointer;
+              }
+
+         
+
+            .bottom {
+                  display: flex;
+                  justify-content: center;
+                  gap: 60px;
+                  padding: 60px;
+                  background: #efefef;
+                  align-items: center;
+              }
+
+            .bottom > img {
+                  width: 380px;
+                  height: auto;
+              }
+
+            .bottom .content {
+                  max-width: 420px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 22px;
+              }
+
+            .content h1 {
+                  font-size: 32px;
+                  margin: 0;
+                  font-family: Georgia, serif;
+              }
+
+            .content p {
+                  font-size: 16px;
+                  margin: 0;
+                  line-height: 1.4;
+              }
+
+            .store-buttons {
+                  display: flex;
+                  gap: 20px;
+              }
+
+            .store-buttons img {
+                  width: 180px;
+                  cursor: pointer;
+              }
+
+        
+
+            @media (max-width: 1000px) {
+                  .explore-grid { grid-template-columns: repeat(2, 1fr); }
+                .order-grid { grid-template-columns: repeat(2, 1fr); }
+            }
+
+            @media (max-width: 700px) {
+                  .explore-grid { grid-template-columns: 1fr; }
+                .order-grid { grid-template-columns: 1fr; }
+                .bottom {
+                        flex-direction: column;
+                        text-align: center;
+                    }
+                  .store-buttons { justify-content: center; }
+            }
+    
+
+        .navbar {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding: 18px 60px;
+              background: white;
+              border-bottom: 1px solid #ddd;
+        }
+
+        .nav-left {
+              font-size: 24px;
+              font-weight: 700;
+              color: #d16ac0;
+              font-family: Georgia, serif;
+        }
+
+        .nav-center a {
+              margin: 0 18px;
+              font-size: 14px;
+              color: #d16ac0;
+              text-decoration: none;
+              font-weight: 600;
+              letter-spacing: 0.5px;
+        }
+
+        .nav-center a:hover {
+              text-decoration: underline;
+        }
+
+        .nav-right button {
+              background: #d16ac0;
+              color: white;
+              padding: 10px 22px;
+              border: none;
+              font-size: 14px;
+              font-weight: 600;
+              border-radius: 3px;
+              cursor: pointer;
+        }
+      
+        </style>
+    </head>
+  <body>
+    <nav class="navbar">
+          <div class="nav-left">Domino's Pizza</div>
+
+          <div class="nav-center">
+                <a href="#">OUR MENU</a>
+                <a href="#">DOMINO'S STORES</a>
+                <a href="#">GIFT CARD</a>
+                <a href="#">CORPORATE ENQUIRY</a>
+                <a href="#">CONTACT</a>
+            </div>
+
+          <div class="nav-right">
+                <button>Download App</button>
+            </div>
+      </nav>
+        </button>
+      </div>
+        </a>
+        </a>
+        </a>
+        </a>
+        </a>
+      </div>
+      </div>
+    </nav>
+
+ 
+
+    <h2 class="explore-title">Explore</h2>
+
+    <div class="explore-grid">
+
+          <!-- repeat 8 items -->
+          <div>
+                <img src="https://i.ibb.co/z5Yq1Gq/pizza1.png">
+                <h3>OUR MENU</h3>
+                <p>Explore our range of delicious Pizzas, delivered in 30 minutes</p>
+                <div class="btn">DISCOVER PIZZA</div>
+            </div>
+
+          <div>
+                <img src="https://i.ibb.co/ynNRGdn/pizza2.png">
+                <h3>OUR MENU</h3>
+                <p>Explore our range of delicious Pizzas, delivered in 30 minutes</p>
+                <div class="btn">DISCOVER PIZZA</div>
+            </div>
+
+          <div>
+                <img src="https://i.ibb.co/7R9wx2V/pizza3.png">
+                <h3>OUR MENU</h3>
+                <p>Explore our range of delicious Pizzas, delivered in 30 minutes</p>
+                <div class="btn">DISCOVER PIZZA</div>
+            </div>
+
+          <div>
+                <img src="https://i.ibb.co/ZxrkW3H/phones.png">
+                <h3>OUR MENU</h3>
+                <p>Explore our range of delicious Pizzas, delivered in 30 minutes</p>
+                <div class="btn">DISCOVER PIZZA</div>
+            </div>
+
+          <!-- row 2 -->
+          <div>
+                <img src="https://i.ibb.co/z5Yq1Gq/pizza1.png">
+                <h3>OUR MENU</h3>
+                <p>Explore our range of delicious Pizzas, delivered in 30 minutes</p>
+                <div class="btn">DISCOVER PIZZA</div>
+            </div>
+
+          <div>
+                <img src="https://i.ibb.co/ynNRGdn/pizza2.png">
+                <h3>OUR MENU</h3>
+                <p>Explore our range of delicious Pizzas, delivered in 30 minutes</p>
+                <div class="btn">DISCOVER PIZZA</div>
+            </div>
+
+          <div>
+                <img src="https://i.ibb.co/7R9wx2V/pizza3.png">
+                <h3>OUR MENU</h3>
+                <p>Explore our range of delicious Pizzas, delivered in 30 minutes</p>
+                <div class="btn">DISCOVER PIZZA</div>
+            </div>
+
+          <div>
+                <img src="https://i.ibb.co/ZxrkW3H/phones.png">
+                <h3>OUR MENU</h3>
+                <p>Explore our range of delicious Pizzas, delivered in 30 minutes</p>
+                <div class="btn">DISCOVER PIZZA</div>
+            </div>
+
+      </div>
+
+
+    <!-- ======================= ORDER (RED GRID) ======================= -->
+
+    <h2 class="order-title">Order</h2>
+
+    <div class="order-grid">
+
+          <div>
+                <img src="https://i.ibb.co/z5Yq1Gq/pizza1.png">
+                <h3>VEG PIZZA</h3>
+                <p>A delight for veggie lovers! Choose from our wide range of delicious vegetarian pizzas.</p>
+                <button>VIEW ALL</button>
+            </div>
+
+          <div>
+                <img src="https://i.ibb.co/ynNRGdn/pizza2.png">
+                <h3>OUR MENU</h3>
+                <p>Indulge into mouth-watering taste of Pizza mania range, perfect answer to cravings.</p>
+                <button>VIEW ALL</button>
+            </div>
+
+          <div>
+                <img src="https://i.ibb.co/7R9wx2V/pizza3.png">
+                <h3>OUR MENU</h3>
+                <p>Choose your favourite non-veg pizzas with fresh toppings and crispy crusts.</p>
+                <button>VIEW ALL</button>
+            </div>
+
+          <div>
+                <img src="https://i.ibb.co/7R9wx2V/pizza3.png">
+                <h3>OUR MENU</h3>
+                <p>Choose your favourite non-veg pizzas with fresh toppings and crispy crusts.</p>
+                <button>VIEW ALL</button>
+            </div>
+
+          <div>
+                <img src="https://i.ibb.co/z5Yq1Gq/pizza1.png">
+                <h3>VEG PIZZA</h3>
+                <p>A delight for veggie lovers! Choose from our wide range of vegetarian pizzas.</p>
+                <button>VIEW ALL</button>
+            </div>
+
+          <div>
+                <img src="https://i.ibb.co/ynNRGdn/pizza2.png">
+                <h3>OUR MENU</h3>
+                <p>Indulge into mouth-watering taste of Pizza mania range.</p>
+                <button>VIEW ALL</button>
+            </div>
+
+      </div>
+
+
+    <!-- ======================= BOTTOM SECTION ======================= -->
+
+    <div class="bottom">
+
+          <img src="https://i.ibb.co/ZxrkW3H/phones.png">
+
+          <div class="content">
+                <h1>Unlock Exclusive Offers</h1>
+                <p>For lightning fast ordering experience download the Domino's app</p>
+
+                <div class="store-buttons">
+                      <img src="https://i.ibb.co/2dq0m6W/google.png">
+                      <img src="https://i.ibb.co/0f17b5V/appstore.png">
+                  </div>
+            </div>
+
+      </div>
+
+    </body>
+  </html>
+        </div>
+        </p>
+        </h1>
+      </div>
+    </div>
+        </button>
+        </p>
+        </h3>
+      </div>
+        </button>
+        </p>
+        </h3>
+      </div>
+        </button>
+        </p>
+        </h3>
+      </div>
+        </button>
+        </p>
+        </h3>
+      </div>
+        </button>
+        </p>
+        </h3>
+      </div>
+        </button>
+        </p>
+        </h3>
+      </div>
+    </div>
+    </h2>
+      </div>
+        </p>
+        </h3>
+      </div>
+      </div>
+        </p>
+        </h3>
+      </div>
+      </div>
+        </p>
+        </h3>
+      </div>
+      </div>
+        </p>
+        </h3>
+      </div>
+      </div>
+        </p>
+        </h3>
+      </div>
+      </div>
+        </p>
+        </h3>
+      </div>
+      </div>
+        </p>
+        </h3>
+      </div>
+      </div>
+        </p>
+        </h3>
+      </div>
+    </div>
+    </h2>
+  </body>
+          
+    </style>
+    </title>
+  </head>
+</html>
