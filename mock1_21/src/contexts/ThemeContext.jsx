@@ -16,7 +16,6 @@ export const ThemeProvider = ({ children }) => {
     );
 };
 
-// Custom hook for using theme context
 export const useTheme = () => {
     const context = useContext(ThemeContext);
     if (!context) {

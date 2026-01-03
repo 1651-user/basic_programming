@@ -6,13 +6,11 @@ export const PostsProvider = ({ children }) => {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // Fetch posts on component mount
     useEffect(() => {
         const fetchPosts = async () => {
             try {
                 const response = await fetch('https://jsonplaceholder.typicode.com/posts');
                 const data = await response.json();
-                // Store only the first 20 posts
                 setPosts(data.slice(0, 20));
                 setLoading(false);
             } catch (error) {
@@ -24,7 +22,6 @@ export const PostsProvider = ({ children }) => {
         fetchPosts();
     }, []);
 
-    // Update a post
     const updatePost = (id, updatedData) => {
         setPosts(prevPosts =>
             prevPosts.map(post =>
@@ -33,7 +30,6 @@ export const PostsProvider = ({ children }) => {
         );
     };
 
-    // Delete a post
     const deletePost = (id) => {
         setPosts(prevPosts => prevPosts.filter(post => post.id !== id));
     };
@@ -45,7 +41,6 @@ export const PostsProvider = ({ children }) => {
     );
 };
 
-// Custom hook for using posts context
 export const usePosts = () => {
     const context = useContext(PostsContext);
     if (!context) {
